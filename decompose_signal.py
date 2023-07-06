@@ -27,14 +27,14 @@ def get_seasonal(signal: np.ndarray, window=30) -> np.ndarray:
     return season
 
 
-def get_residuals(observed: np.ndarray, trend: np.ndarray, seasonal : np.ndarray) -> np.ndarray:
+def get_residuals(observed: np.ndarray, trend: np.ndarray, seasonal: np.ndarray) -> np.ndarray:
     return observed - trend - seasonal
 
 
-def print_naive_analysis(signal: np.ndarray, name: str) -> None:
+def print_naive_analysis(signal: np.ndarray, name: str, window=10) -> None:
     sig_len = signal.shape[-1]
-    sig_t = get_trend(signal)
-    sig_s = get_seasonal(signal)
+    sig_t = get_trend(signal, window=window)
+    sig_s = get_seasonal(signal, window=window)
     sig_r = get_residuals(signal, sig_t, sig_s)
 
     fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1)
