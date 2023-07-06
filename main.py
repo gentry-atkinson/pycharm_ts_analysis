@@ -4,6 +4,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import logging
 from datetime import datetime
+from decompose_signal import print_naive_analysis
 
 DATA_PATH = 'data/'
 
@@ -44,3 +45,8 @@ if __name__ == '__main__':
     fig.tight_layout()
     plt.savefig("weather_data.png")
     logging.info("Weather plot saved")
+
+    print_naive_analysis(temps, "temperature")
+    print_naive_analysis(hums, "humidity")
+    print_naive_analysis(w_speeds, "wind_speed")
+    print_naive_analysis(press, "pressure")
